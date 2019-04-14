@@ -23,7 +23,7 @@ func FormHandler(w http.ResponseWriter, r *http.Request) {
 
 	r.ParseForm()
 
-	Write(strings.Join(r.Form["email"], ""), strings.Join(r.Form["name"], ""), strings.Join(r.Form["rsvp"], "") == "1")
+	Write(strings.Join(r.Form["email"], ""), strings.Join(r.Form["name"], ""), strings.Join(r.Form["rsvp-status"], "") == "1")
 
 	fmt.Fprintln(w, "Done.")
 }
