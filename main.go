@@ -1,15 +1,21 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
+	"os"
 )
 
 func main() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", FormHandler)
 
-	log.Println("Serving on :8080")
-	err := http.ListenAndServe(":8080", mux)
-	log.Fatal(err)
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+		log.Printf("Defaulting to port %s", port)
+	}
+	log.Printf("Listening on port %s", port)
+	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), mux))
 }
