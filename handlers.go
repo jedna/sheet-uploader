@@ -25,5 +25,5 @@ func FormHandler(w http.ResponseWriter, r *http.Request) {
 
 	Write(strings.Join(r.Form["email"], ""), strings.Join(r.Form["name"], ""), strings.Join(r.Form["rsvp-status"], "") == "1")
 
-	fmt.Fprintln(w, "Done.")
+	http.Redirect(w, r, "https://svatba.hrubesovi.com/diky.html", 303)
 }
