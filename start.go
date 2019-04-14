@@ -106,10 +106,8 @@ func Write(email string, name string, rsvp bool) {
 		Values: [][]interface{}{values},
 	}
 
-	resp, err := srv.Spreadsheets.Values.Append(spreadsheetId, range2, rb).ValueInputOption(valueInputOption).InsertDataOption(insertDataOption).Do()
+	_, err = srv.Spreadsheets.Values.Append(spreadsheetId, range2, rb).ValueInputOption(valueInputOption).InsertDataOption(insertDataOption).Do()
 	if err != nil {
 		log.Fatalf("Unable to retrieve data from sheet: %v", err)
 	}
-
-	fmt.Println(resp)
 }

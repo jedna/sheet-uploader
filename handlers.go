@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"net/http/httputil"
 	"strings"
 )
 
@@ -14,11 +15,11 @@ func FormHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	//requestDump, err := httputil.DumpRequest(r, true)
-	//if err != nil {
-	//	fmt.Println(err)
-	//}
-	//fmt.Println(string(requestDump))
+	requestDump, err := httputil.DumpRequest(r, true)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(string(requestDump))
 
 	r.ParseForm()
 
